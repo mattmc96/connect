@@ -3,7 +3,8 @@
     "airbnb",
     "plugin:prettier/recommended",
     "prettier/react",
-    "airbnb/hooks"
+    "airbnb/hooks",
+    "prettier/standard"
   ],
   "env": {
     "browser": true,
@@ -13,6 +14,14 @@
     "node": true
   },
   "rules": {
+    "no-console": "off",
+    "no-restricted-syntax": [
+      "error",
+      {
+        "selector": "CallExpression[callee.object.name='console'][callee.property.name!=/^(log|warn|error|info|trace)$/]",
+        "message": "Unexpected property on console object was called"
+      }
+    ],
     "jsx-a11y/href-no-hash": ["off"],
     "react/jsx-filename-extension": ["warn", { "extensions": [".js", ".jsx"] }],
     "max-len": [

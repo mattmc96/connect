@@ -1,16 +1,23 @@
 {
   "name": "connect",
   "version": "0.1.0",
+  "main": "./server/utils/index.js",
+  "proxy": "http://localhost:3000",
   "private": true,
   "dependencies": {
+    "@auth0/auth0-react": "^1.1.0",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.20.0",
     "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
     "chalk": "^4.1.0",
+    "cors": "^2.8.5",
     "dotenv": "^8.2.0",
+    "ejs": "^3.1.5",
     "express": "^4.17.1",
+    "express-partials": "^0.3.0",
     "express-session": "^1.17.1",
     "gulp": "^4.0.2",
     "gulp-sass": "^4.1.0",
@@ -18,7 +25,9 @@
     "massive": "^6.6.0",
     "moment": "^2.29.0",
     "normalize.css": "^8.0.1",
+    "passport": "^0.4.1",
     "passport-github": "^1.1.0",
+    "passport-github2": "^0.1.12",
     "react": "^16.13.1",
     "react-big-calendar": "^0.28.0",
     "react-dom": "^16.13.1",
@@ -28,6 +37,9 @@
     "redux": "^4.0.5",
     "redux-devtools-extension": "^2.13.8",
     "reset": "^0.1.0",
+    "router": "^1.3.5",
+    "sharp": "^0.26.1",
+    "uglify": "^0.1.5",
     "yarn": "^1.22.5"
   },
   "scripts": {
@@ -64,6 +76,8 @@
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.21.1",
     "eslint-plugin-react-hooks": "^4.1.2",
+    "gulp-livereload": "^4.0.2",
+    "gulp-real-favicon": "^0.3.2",
     "prettier": "^2.1.2"
   },
   "peerDependencies": {
