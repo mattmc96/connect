@@ -1,11 +1,13 @@
 /* eslint-disable */
-var gulp = require('gulp')
-var sass = require('gulp-sass')
-livereload = require('gulp-livereload')
+const gulp = require('gulp')
+const sass = require('gulp-sass')
+const livereload = require('gulp-livereload')
+// const uglify = require('gulp-uglify')
+const imagemin = require('gulp-imagemin')
+const { src } = require('gulp')
 livereload({ start: true })
-uglify = require('gulp-uglify')
 
-exports.default = defaultTask
+// exports.default = defaultTask
 
 exports.default = function () {
   return gulp
@@ -14,18 +16,29 @@ exports.default = function () {
     .pipe(gulp.dest('./css'))
 }
 
-// Sass Live
-gulp.task('sass', function () {
-  gulp.src('sass').pipe(sass()).pipe(gulp.dest('css')).pipe(livereload())
+/* IMAGE compression */
+var SRC = './js/*.js'
+var DEST = 'dist'
+
+gulp.task('compress-images', function () {
+  return gulp
+    .src('pre-images/*')
+    .pipe(imagemin({ progressive: true }))
+    .pipe(gulp.dest('images'))
 })
 
-// LiveReload
+/* SASS live */
+gulp.task('scss', function () {
+  gulp.src('scss/*').pipe(scss()).pipe(gulp.dest('css')).pipe(livereload())
+})
+
+/* LIVE RELOAD */
 gulp.task('watch', function () {
   livereload.listen()
-  gulp.watch('sass', ['sass'])
+  gulp.watch('scss', ['scss'])
 })
 
-// Minification of files
+/* MINIFY files */
 gulp.task('js', function () {
   return gulp
     .src('js/*.js')
@@ -39,3 +52,7 @@ gulp.task('js', function () {
 /* gulp.task('minify', function () {
    gulp.src('js/app.js').pipe(uglify()).pipe(gulp.dest('build'));
 }); */
+
+function copyHtml() {
+  return src('src/*.html').pipe(gulp.dest('dist'))
+}

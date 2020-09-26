@@ -5,9 +5,11 @@ const Login = () => {
   const { loginWithRedirect } = useAuth0()
 
   return (
-    <button type="submit" onClick={() => loginWithRedirect()}>
-      Login
-    </button>
+    <>
+      <button type="submit" onClick={() => loginWithRedirect()}>
+        Log In
+      </button>
+    </>
   )
 }
 

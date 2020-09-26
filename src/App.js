@@ -1,12 +1,16 @@
 import React from 'react'
-import './App.css'
-import Login from './Components/Auth/Login'
+import LoginButton from './Components/Auth/LoginButton'
+import LogoutButton from './Components/Auth/LogoutButton'
+import Profile from './Components/Auth/Profile'
+import './Styles.scss'
 
 function App() {
   return (
-    <div className="App">
-      <Login />
-    </div>
+    <>
+      <LoginButton />
+      <LogoutButton />
+      <Profile />
+    </>
   )
 }
 
