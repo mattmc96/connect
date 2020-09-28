@@ -1,85 +1,93 @@
 require('dotenv').config()
+const chalk = require('chalk')
 const express = require('express')
+const cors = require('cors')
 const massive = require('massive')
-// const cors = require('cors')
 const session = require('express-session')
-const bodyParser = require('body-parser')
-
-// const passport = require('./passport-setup')
+const passport = require('passport')
+const GitHubStrategy = require('passport-github').Strategy
+const authCtrl = require('../controllers/authController')
 
 const app = express()
+const successStyle = chalk.bgBlue.bold.yellow
 
 const { CONNECTION_STRING, SERVER_PORT, SESSION_SECRET } = process.env
 
-// app.use(cors())
+// MiddleWare
+app.use(passport.initialize())
+app.use(passport.session())
 app.use(express.json())
-// app.use(passport.initialize())
-// app.use(passport.session())
-app.use(bodyParser.json())
+app.use(cors())
+app.use(require('body-parser').urlencoded({ extended: true }))
 
 app.use(
   session({
     secret: SESSION_SECRET,
-    resave: false,
+    resave: true,
     saveUninitialized: true,
     cookie: { maxAge: 1000 * 60 * 60 * 24 * 365 },
   })
 )
+passport.use(
+  new GitHubStrategy(
+    {
+      clientID: '3f3cc46712d1647401a0',
+      clientSecret: '969277c5eac2c49af52dba9eba2c400ea41b8e0f',
+      callbackURL: 'http://localhost:3000/auth/github/callback',
+    },
+    function (accessToken, refreshToken, user, cb) {
+      User.findOrCreate({ githubId: profile.id }, function (err, user) {
+        return cb(null, user)
+      })
+    }
+  )
+)
 
-// const isLoggedIn = (req, res, next) => {
-//   if (req.user) {
-//     next()
-//   } else {
-//     res.sendStatus(401)
-//   }
-// }
-// // Auth0 endpoints
-// app.get('/', (req, res) => res.send('You are not logged in!'))
+passport.serializeUser((user, cb) => {
+  cb(null, user)
+})
 
-// app.get('/failed', (req, res) => res.send('You failed'))
-// app.get('/success', isLoggedIn, (req, res) =>
-//   res.send(`Welcome mr ${req.user.email}!`)
-// )
+passport.deserializeUser((obj, cb) => {
+  cb(null, obj)
+})
 
-// app.get('/login', function (req, res) {
-//   res.render('login', { user: req.user })
-// })
+const isAuthenticated = async (req, res, next) => {
+  if ((req, isAuthenticated())) {
+    return next()
+  }
+  res.redirect('/login')
+}
 
-// app.get(
-//   '/auth/github',
-//   passport.authenticate('github', { scope: ['user:email'] }),
-//   function (req, res) {
-//     // The request will be redirected to GitHub for authentication, so this
-//     // function will not be called.
-//   }
-// )
-// app.get(
-//   '/auth/github',
-//   passport.authenticate('github', { scope: ['profile', 'email'] })
-// )
+app.get('/account', isAuthenticated, (req, res) => {
+  res.render('Success', req.session.user)
+})
 
-// app.get(
-//   '/auth/github/callback',
-//   passport.authenticate('github', { failureRedirect: '/login' }),
-//   function (req, res) {
-//     // Successful authentication, redirect home
-//     res.redirect('/')
-//   }
-// )
+app.post('/auth/register', authCtrl.register)
 
-// app.get('/logout', (req, res) => {
-//   req.session = null
-//   req.logout()
-//   res.redirect('/')
-// })
+app.post('/auth/login', authCtrl.login)
+
+app.get('/auth/github', passport.authenticate('github'))
+
+app.get(
+  '/auth/github/callback',
+  passport.authenticate('github', {
+    successRedirect: '/account',
+    failureRedirect: '/login',
+  }),
+  (req, res) => {
+    res.redirect('/login')
+  }
+)
+
+app.delete('/auth/logout', authCtrl.logout)
 
 massive({
   connectionString: CONNECTION_STRING,
   ssl: { rejectUnauthorized: false },
 }).then((db) => {
   app.set('db', db)
-  console.log('=> DB CONNECTED')
+  console.log(successStyle('=> DB CONNECTED'))
   app.listen(SERVER_PORT, () =>
-    console.log(`=> SERVER CONNECTED ON PORT: ${SERVER_PORT}`)
+    console.log(successStyle(`=> SERVER CONNECTED ON PORT: ${SERVER_PORT}`))
   )
 })
