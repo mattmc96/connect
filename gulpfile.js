@@ -2,10 +2,11 @@
 const gulp = require('gulp')
 const sass = require('gulp-sass')
 const livereload = require('gulp-livereload')
-// const uglify = require('gulp-uglify')
 const imagemin = require('gulp-imagemin')
 const { src } = require('gulp')
 livereload({ start: true })
+
+// const uglify = require('gulp-uglify')
 
 // exports.default = defaultTask
 

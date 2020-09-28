@@ -8,6 +8,8 @@ import * as serviceWorker from './serviceWorker'
 const domain = process.env.REACT_APP_AUTH0_DOMAIN
 const clientId = process.env.REACT_APP_AUTH0_CLIENT_ID
 
+console.log(window.location.origin)
+
 ReactDOM.render(
   <Auth0Provider
     domain={domain}

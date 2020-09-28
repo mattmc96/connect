@@ -45,4 +45,5 @@ module.exports = {
     req.session.destroy()
     res.sendStatus(200)
   },
+  getUsers: async (req, res) => {},
 }
