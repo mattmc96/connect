@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { ChatList } from 'react-chat-elements'
-import FormControl from 'react-bootstrap/lib/FormControl'
-import FormGroup from 'react-bootstrap/lib/FormGroup'
+import FormControl from 'react-bootstrap/FormControl'
+import FormGroup from 'react-bootstrap/FormGroup'
 
 /**
  *

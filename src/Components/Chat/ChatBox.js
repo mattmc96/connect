@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import FormControl from 'react-bootstrap/lib/FormControl'
-import InputGroup from 'react-bootstrap/lib/InputGroup'
-import Button from 'react-bootstrap/lib/Button'
-import FormGroup from 'react-bootstrap/lib/FormGroup'
-import Col from 'react-bootstrap/lib/Col'
-import Jumbotron from 'react-bootstrap/lib/Jumbotron'
-import Glyphicon from 'react-bootstrap/lib/Glyphicon'
+import FormControl from 'react-bootstrap/FormControl'
+import InputGroup from 'react-bootstrap/InputGroup'
+import Button from 'react-bootstrap/Button'
+import FormGroup from 'react-bootstrap/FormGroup'
+import Col from 'react-bootstrap/Col'
+import Jumbotron from 'react-bootstrap/Jumbotron'
+// import Glyphicon from 'react-bootstrap/Glyphicon'
 import {
   MessageList,
   Navbar as NavbarComponent,
@@ -21,6 +21,9 @@ import {
  */
 
 export default class ChatBox extends Component {
+  constructor() {
+    super()
+  }
   state = {
     messageText: '',
   }
@@ -60,10 +63,10 @@ export default class ChatBox extends Component {
                 <div>
                   <Col mdHidden lgHidden>
                     <p className="navBarText">
-                      <Glyphicon
+                      {/* <Glyphicon
                         onClick={this.props.onBackPressed}
                         glyph="chevron-left"
-                      />
+                      /> */}
                     </p>
                   </Col>
                   <Avatar

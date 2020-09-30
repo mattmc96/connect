@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import NavBar from './NavBar'
-import Grid from 'react-bootstrap/lib/Grid'
-import Row from 'react-bootstrap/lib/Row'
-import Col from 'react-bootstrap/lib/Col'
-import Modal from 'react-bootstrap/lib/Modal'
+// import Grid from 'react-bootstrap/Grid'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
+import Modal from 'react-bootstrap/Modal'
 import UserList from './UserList'
 import ChatBox from './ChatBox'
 import ErrorModal from './ErrorModal'
@@ -13,7 +13,7 @@ import 'react-chat-elements/dist/main.css'
 import io from 'socket.io-client'
 import { fetchUsers } from '../../requests.js'
 import { NotificationContainer, NotificationManager } from 'react-notifications'
-import 'react-notifications/lib/notifications.css'
+// import 'react-notifications/notifications.css'
 import axios from 'axios'
 
 /**
@@ -31,7 +31,7 @@ const SOCKET_URI = process.env.REACT_APP_SERVER_URI
  *
  */
 
-class App extends Component {
+class Main extends Component {
   socket = null
 
   state = {
@@ -259,7 +259,7 @@ class App extends Component {
     return (
       <div>
         <NavBar signedInUser={this.state.user} />
-        <Grid>
+        {/* <Grid>
           <Row className="show-grid">
             <Col {...chatListProps} md={4}>
               <UserList
@@ -278,7 +278,7 @@ class App extends Component {
               />
             </Col>
           </Row>
-        </Grid>
+        </Grid> */}
         <Modal show={this.state.signInModalShow}>
           <Modal.Header>
             <Modal.Title>Sign In as:</Modal.Title>
@@ -303,4 +303,4 @@ class App extends Component {
   }
 }
 
-export default App
+export default Main
