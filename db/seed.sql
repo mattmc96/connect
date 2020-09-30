@@ -18,3 +18,12 @@ CREATE TABLE feed (
 )
 
 
+CREATE TABLE repos (
+
+)
+CREATE TABLE followers (
+
+)
+CREATE TABLE userInfo(
+    
+)
