@@ -76,14 +76,15 @@ span {
 .git {
   box-sizing: border-box;
   display: inline;
+  margin-top: 1rem;
   position: relative;
-  margin-top: 3rem;
-  left: 80rem;
+  left: 96rem;
+  position: relative;
 }
 
 .logo {
-  height: 4rem;
-  width: 4rem;
+  height: 3rem;
+  width: 3rem;
   position: absolute;
   left: 17.6rem;
 }
@@ -98,4 +99,9 @@ span {
   font-size: 60px;
   color: white;
   font-family: 'Galada', cursive;
+}
+
+.Auth-box {
+  position: relative;
+  left: 104rem;
 }

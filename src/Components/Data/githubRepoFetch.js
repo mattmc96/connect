@@ -1,4 +1,8 @@
 import React from 'react'
+import TextField from '@material-ui/core/TextField'
+import { createMuiTheme } from '@material-ui/core/styles'
+import white from '@material-ui/core/colors/purple'
+import Autocomplete from '@material-ui/lab/Autocomplete'
 
 // https://api.github.com/search/repositories?q=html
 function App() {
@@ -12,6 +16,11 @@ function App() {
       return
     }
 
+    createMuiTheme({
+      palette: {
+        primary: white,
+      },
+    })
     setIsLoading(true)
 
     // make API calls
@@ -39,11 +48,21 @@ function App() {
           setInputValue(evt.target.elements.query.value)
         }}
       >
-        <input
+        {/* <input
           type="text"
           name="query"
           className="github_search_input"
           placeholder="Search Github Repositories"
+        /> */}
+        <TextField
+          className="github_search_input"
+          name="query"
+          type="text"
+          placeholder="Search Github Repositories"
+          label="Search input"
+          margin="normal"
+          variant="outlined"
+          InputProps={{ type: 'search' }}
         />
       </form>
       {isLoading && <div>Loading...</div>}

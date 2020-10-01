@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
+import LoginButton from '../../Components/Auth/LoginButton'
+import LogoutButton from '../../Components/Auth/LogoutButton'
 import JSONPretty from 'react-json-pretty'
 import * as FaIcons from 'react-icons/fa'
 import * as AiIcons from 'react-icons/ai'
@@ -60,6 +62,10 @@ const Navbar = () => {
         <JSONPretty data={user} />
       </>
       ) ) */}
+      <di className="Auth-box">
+        <LoginButton />
+        <LogoutButton />
+      </di>
     </>
   )
 }

@@ -3,7 +3,6 @@ const express = require('express')
 const cors = require('cors')
 const massive = require('massive')
 const session = require('express-session')
-const passport = require('passport')
 // const authCtrl = require('../controllers/authController')
 
 const app = express()
@@ -11,8 +10,6 @@ const app = express()
 const { CONNECTION_STRING, SERVER_PORT, SESSION_SECRET } = process.env
 
 // MiddleWare
-app.use(passport.initialize())
-app.use(passport.session())
 app.use(express.json())
 app.use(cors())
 app.use(require('body-parser').urlencoded({ extended: true }))
