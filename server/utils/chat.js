@@ -22,6 +22,23 @@ io.on('connection', function(client) {
         }
 })
 
+client.on("disconnect", function() {
+  if (!client.user_id || !clients[client.user_id]) {
+    return;
+  }
+  let targetClients = clients[client.user_id];
+  for (let i = 0; i < targetClients.length; ++i) {
+    if (targetClients[i] == client) {
+      targetClients.splice(i, 1);
+    }
+  }
+});
+});
+
+app.get("/users", (req, res) => {
+res.send({ data: users });
+});
+
 client.on('message', e => {
     let targetId = e.to
     let sourceId = client.user_id;
@@ -39,19 +56,4 @@ client.on('message', e => {
 
 
 
-client.on("disconnect", function() {
-    if (!client.user_id || !clients[client.user_id]) {
-      return;
-    }
-    let targetClients = clients[client.user_id];
-    for (let i = 0; i < targetClients.length; ++i) {
-      if (targetClients[i] == client) {
-        targetClients.splice(i, 1);
-      }
-    }
-  });
-});
 
-app.get("/users", (req, res) => {
-  res.send({ data: users });
-});
