@@ -50,6 +50,7 @@ gulp.task('js', function () {
     .pipe(gulp.dest('build'))
 })
 
+// TODO redo this task its no bueno
 /* gulp.task('minify', function () {
    gulp.src('js/app.js').pipe(uglify()).pipe(gulp.dest('build'));
 }); */

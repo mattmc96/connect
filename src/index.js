@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
 import { Auth0Provider } from '@auth0/auth0-react'
-import App from './App'
+import Routes from './Routes'
 import * as serviceWorker from './serviceWorker'
 
 const domain = process.env.REACT_APP_AUTH0_DOMAIN
@@ -16,7 +16,7 @@ ReactDOM.render(
     clientId={clientId}
     redirectUri={window.location.origin}
   >
-    <App />
+    <Routes />
   </Auth0Provider>,
   document.getElementById('root')
 )

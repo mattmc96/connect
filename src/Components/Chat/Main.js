@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import NavBar from './NavBar'
 // import Grid from 'react-bootstrap/Grid'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
@@ -259,7 +258,7 @@ class Main extends Component {
     return (
       <div>
         <NavBar signedInUser={this.state.user} />
-        {/* <Grid>
+        <Grid>
           <Row className="show-grid">
             <Col {...chatListProps} md={4}>
               <UserList
@@ -278,7 +277,7 @@ class Main extends Component {
               />
             </Col>
           </Row>
-        </Grid> */}
+        </Grid>
         <Modal show={this.state.signInModalShow}>
           <Modal.Header>
             <Modal.Title>Sign In as:</Modal.Title>

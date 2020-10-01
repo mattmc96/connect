@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-// import Glyphicon from 'react-bootstrap/Glyphicon'
+import { BsFillExclamationCircleFill } from 'react-icons/bs'
 import Modal from 'react-bootstrap/Modal'
 
 /**
@@ -17,7 +17,9 @@ export default class ErrorModal extends Component {
         </Modal.Header>
 
         <Modal.Body>
-          <h1 className="text-center">{/* <Glyphicon glyph="alert" /> */}</h1>
+          <h1 className="text-center">
+            <BsFillExclamationCircleFill glyph="alert" />
+          </h1>
           <h5 className="text-center">{this.props.errorMessage}</h5>
         </Modal.Body>
       </Modal>

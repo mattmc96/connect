@@ -1,5 +1,4 @@
 require('dotenv').config()
-const chalk = require('chalk')
 const express = require('express')
 const cors = require('cors')
 const massive = require('massive')
@@ -8,7 +7,6 @@ const passport = require('passport')
 // const authCtrl = require('../controllers/authController')
 
 const app = express()
-// const successStyle = chalk.bgOrange.bold.magenta
 
 const { CONNECTION_STRING, SERVER_PORT, SESSION_SECRET } = process.env
 
