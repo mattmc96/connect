@@ -4,3 +4,8 @@ body {
   background-image: linear-gradient(to top, #accbee 0%, #e7f0fd 100%);
   z-index: -1;
 }
+
+.chart {
+  box-sizing: border-box;
+  z-index: 2;
+}
