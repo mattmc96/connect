@@ -24,7 +24,7 @@ const LogoutButton = () => {
         startIcon={<ExitToAppIcon />}
         className={classes.button}
       >
-        Sign Out
+        SIGNOUT
       </Button>
     </>
   )

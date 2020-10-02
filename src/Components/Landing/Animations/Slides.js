@@ -7,18 +7,23 @@ const slides = [
   {
     id: 0,
     url:
-      'photo-1544511916-0148ccdeb877?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1901&q=80i',
+      'photo-1519309621146-2a47d1f7103a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9',
   },
   {
     id: 1,
     url:
-      'photo-1544572571-ab94fd872ce4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1534&q=80',
+      'photo-1521737604893-d14cc237f11d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9',
   },
   {
     id: 2,
-    url: 'reserve/bnW1TuTV2YGcoh1HyWNQ_IMG_0207.JPG?ixlib=rb-1.2.1&w=1534&q=80',
+    url:
+      'photo-1510146758428-e5e4b17b8b6a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9',
   },
-  { id: 3, url: 'photo-1540206395-68808572332f?ixlib=rb-1.2.1&w=1181&q=80' },
+  {
+    id: 3,
+    url:
+      'photo-1467232004584-a241de8bcf5d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9',
+  },
 ]
 
 const Slides = () => {
@@ -30,7 +35,7 @@ const Slides = () => {
     config: config.molasses,
   })
   useEffect(
-    () => void setInterval(() => set((state) => (state + 1) % 4), 5000),
+    () => void setInterval(() => set((state) => (state + 1) % 4), 6000),
     []
   )
   return transitions.map(({ item, props, key }) => (

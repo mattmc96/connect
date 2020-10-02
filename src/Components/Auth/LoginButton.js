@@ -24,13 +24,13 @@ const Login = () => {
       <Button
         type="submit"
         variant="contained"
-        size="normal"
+        size="small"
         onClick={() => loginWithRedirect()}
         color="primary"
         startIcon={<VpnKeyIcon />}
         className={classes.button}
       >
-        Sign In
+        LOGIN
       </Button>
     </>
   )

@@ -64,9 +64,9 @@ const Navbar = () => {
         <JSONPretty data={user} />
       </p>
       ) ) */}
-      <di className="GithubRepoFetch">
+      {/* <di className="GithubRepoFetch">
         <GithubRepoFetch />
-      </di>
+      </di> */}
     </>
   )
 }

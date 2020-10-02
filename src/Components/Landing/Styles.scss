@@ -1,7 +1,7 @@
 .card {
   width: 30ch;
   height: 30ch;
-  border-radius: 15px;
+  border-radius: 10%;
   opacity: 100%;
   background-image: url('../../assets/connect_logo.png');
   background-size: cover;
@@ -10,8 +10,8 @@
   transition: box-shadow 0.5s;
   will-change: transform;
   position: relative;
-  top: 0.5rem;
-  left: 50rem;
+  top: 0rem;
+  left: 48rem;
   z-index: 2;
 }
 
@@ -45,3 +45,16 @@
   position: relative;
   background-position: center;
 }
+.jumbo {
+  height: 10vh;
+  width: 10vw;
+  position: relative;
+  top: 0rem;
+  left: 25rem;
+  z-index: 2;
+  border-radius: 10%;
+}
+// .learn {
+//   position: relative;
+//   z-index: 3;
+// }

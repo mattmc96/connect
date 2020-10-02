@@ -1,5 +1,16 @@
 import React from 'react'
+import {
+  createMuiTheme,
+  // withStyles,
+  useStyles,
+  makeStyles,
+  ThemeProvider,
+} from '@material-ui/core/styles'
+import Button from '@material-ui/core/Button'
+import { green, purple } from '@material-ui/core/colors'
 import { useSpring, animated } from 'react-spring'
+import Jumbotron from 'react-bootstrap/Jumbotron'
+import ToggleButton from 'react-bootstrap/ToggleButton'
 import Slides from './Animations/Slides'
 import images from './img/images'
 import './Styles.scss'
@@ -16,8 +27,20 @@ const trans = (x, y, s) =>
 function Landing() {
   const [props, set] = useSpring(() => ({
     xys: [0, 0, 1],
-    config: { mass: 5, tension: 350, friction: 40 },
+    config: { mass: 8, tension: 350, friction: 30 },
   }))
+
+  const theme = createMuiTheme({
+    palette: {
+      primary: green,
+    },
+  })
+  const useStyles = makeStyles((theme) => ({
+    margin: {
+      margin: theme.spacing(1),
+    },
+  }))
+  const classes = useStyles()
   return (
     <div className="body">
       <animated.div
@@ -29,6 +52,30 @@ function Landing() {
       <React.Fragment className="slides-box">
         <Slides />
       </React.Fragment>
+      <div className="jumbo">
+        <Jumbotron className="jumbo">
+          <h1>Hello, world!</h1>
+          <p>
+            This is a simple hero unit, a simple jumbotron-style component for
+            calling extra attention to featured content or information.
+          </p>
+          <p>
+            <ThemeProvider theme={theme}>
+              <Button
+                variant="contained"
+                color="primary"
+                className={classes.margin}
+                size="large"
+                type="submit"
+                // TODO MAKE THIS A LGOIN BUTTON OR REDIRECT OF SOME SORT
+                // onClick={() => loginWithRedirect()}
+              >
+                Get Started
+              </Button>
+            </ThemeProvider>
+          </p>
+        </Jumbotron>
+      </div>
     </div>
   )
 }
