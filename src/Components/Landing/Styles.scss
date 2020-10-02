@@ -1,8 +1,8 @@
 .card {
-  width: 35ch;
-  height: 35ch;
+  width: 30ch;
+  height: 30ch;
   border-radius: 15px;
-
+  opacity: 100%;
   background-image: url('../../assets/connect_logo.png');
   background-size: cover;
   background-position: center center;
@@ -10,16 +10,38 @@
   transition: box-shadow 0.5s;
   will-change: transform;
   position: relative;
-  top: 2.5rem;
-  left: 65rem;
+  top: 0.5rem;
+  left: 50rem;
+  z-index: 2;
 }
 
 .card:hover {
   box-shadow: 0px 30px 100px -10px rgba(0, 0, 0, 0.4);
 }
 
-body {
-  background-image: url('https://cdn.pixabay.com/photo/2014/09/01/19/39/chess-433071_960_720.jpg');
-  background-repeat: no-repeat;
-  background-size: 130rem;
+// .backgroundbody {
+//   background-image: url('https://cdn.pixabay.com/photo/2014/09/01/19/39/chess-433071_960_720.jpg');
+//   background-repeat: no-repeat;
+//   background-size: 130rem;
+//   z-index: 1;
+// }
+// .body {
+//   padding: 2rem;
+//   background: #f0f2f0; /* fallback for old browsers */
+//   background: -webkit-linear-gradient(
+//     to right,
+//     #000c40,
+//     #f0f2f0
+//   ); /* Chrome 10-25, Safari 5.1-6 */
+//   background: linear-gradient(
+//     to right,
+//     #000c40,
+//     #f0f2f0
+//   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+// }
+
+.slides-box {
+  box-sizing: border-box;
+  position: relative;
+  background-position: center;
 }

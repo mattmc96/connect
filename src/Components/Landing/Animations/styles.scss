@@ -1,0 +1,18 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+  z-index: 1;
+}
+
+.bg {
+  position: absolute;
+  top: 10rem;
+  left: 0rem;
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  will-change: opacity;
+  background-repeat: no-repeat;
+  z-index: 1;
+}

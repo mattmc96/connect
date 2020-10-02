@@ -28,13 +28,15 @@ const Navbar = () => {
           </Link>
           <>
             <h1 className="header">Connect</h1>
-            <img src={Logo} alt="nothing" className="logo" />
+            <img src={Logo} class="img-responsive" alt="responsive image" />
           </>
-          <d className="git">
-            <GithubRepoFetch />
-          </d>
+          <span className="Auth-box"></span>
         </div>
         <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
+          <di className="Auth-box">
+            <LoginButton />
+            <LogoutButton />
+          </di>
           <ul className="nav-menu-items" onClick={showSidebar}>
             <li className="navbar-toggle">
               <Link to="#" className="menu-bars">
@@ -55,16 +57,15 @@ const Navbar = () => {
         </nav>
       </IconContext.Provider>
       {/* return ( isAuthenticated && (
-      <>
+      <p>
         <img src={user.picture} alt={user.name} />
         <p>{user.email}</p>
 
         <JSONPretty data={user} />
-      </>
+      </p>
       ) ) */}
-      <di className="Auth-box">
-        <LoginButton />
-        <LogoutButton />
+      <di className="GithubRepoFetch">
+        <GithubRepoFetch />
       </di>
     </>
   )

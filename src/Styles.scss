@@ -1,17 +1,6 @@
 body {
-  padding: 2rem;
-}
-
-button {
-  margin: 2rem 0;
-  padding: 1rem 2rem;
-  width: 120px;
-  cursor: pointer;
-}
-
-img {
-  border-radius: 25px;
-  height: 60px;
-  width: 70px;
-  display: flex;
+  height: 100vh;
+  width: 100vw;
+  background-image: linear-gradient(to top, #accbee 0%, #e7f0fd 100%);
+  z-index: -1;
 }

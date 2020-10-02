@@ -3,6 +3,7 @@ import TextField from '@material-ui/core/TextField'
 import { createMuiTheme } from '@material-ui/core/styles'
 import white from '@material-ui/core/colors/purple'
 import Autocomplete from '@material-ui/lab/Autocomplete'
+import { Transform } from '@material-ui/icons'
 
 // https://api.github.com/search/repositories?q=html
 function App() {
@@ -54,15 +55,18 @@ function App() {
           className="github_search_input"
           placeholder="Search Github Repositories"
         /> */}
+
         <TextField
           className="github_search_input"
           name="query"
           type="text"
-          placeholder="Search Github Repositories"
-          label="Search input"
+          color="bg-light"
+          placeholder="Search Input"
+          label="Github Repositories"
           margin="normal"
-          variant="outlined"
+          variant="filled"
           InputProps={{ type: 'search' }}
+          style={{ flex: 1, margin: '0 20px 0 0', color: 'white' }}
         />
       </form>
       {isLoading && <div>Loading...</div>}
