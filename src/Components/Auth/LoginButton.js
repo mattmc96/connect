@@ -1,8 +1,8 @@
 import React from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
 import Button from '@material-ui/core/Button'
+import { SocialMediaIconsReact } from 'social-media-icons-react'
 import { makeStyles } from '@material-ui/core/styles'
-import VpnKeyIcon from '@material-ui/icons/VpnKey'
 import green from '@material-ui/core/colors/green'
 
 const Login = () => {
@@ -27,7 +27,21 @@ const Login = () => {
         size="small"
         onClick={() => loginWithRedirect()}
         color="primary"
-        startIcon={<VpnKeyIcon />}
+        startIcon={
+          <SocialMediaIconsReact
+            borderColor="rgba(0,0,0,0.25)"
+            borderWidth="5"
+            borderStyle="solid"
+            icon="github"
+            iconColor="rgba(255,255,255,1)"
+            backgroundColor="rgba(15,16,16,1)"
+            iconSize="5"
+            roundness="20%"
+            // url="https://some-website.com/my-social-media-url"
+            // onClick={() => loginWithRedirect()}
+            size="5"
+          />
+        }
         className={classes.button}
       >
         LOGIN
