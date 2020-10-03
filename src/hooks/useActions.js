@@ -16,4 +16,3 @@ const useActions = (actions, deps) => {
 }
 
 export default useActions
-s

@@ -1,4 +1,4 @@
-import { remindersTypes } from '../ducks/reminders'
+import { remindersTypes } from '../redux/reminders'
 
 const addId = () => (next) => (action) => {
   const newAction = {

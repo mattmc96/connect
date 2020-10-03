@@ -2,7 +2,7 @@ import { applyMiddleware, combineReducers, compose, createStore } from 'redux'
 import logger from 'redux-logger'
 
 import { remindersMiddlewares } from './middlewares'
-import * as reducers from './ducks'
+import * as reducers from './redux'
 
 export const initialState = {
   calendar: {
@@ -24,7 +24,7 @@ const configureStore = (preloadedState = initialState) => {
   const store = createStore(rootReducer, preloadedState, composedEnhancers)
 
   if (process.env.NODE_ENV !== 'production' && module.hot) {
-    module.hot.accept('./ducks', () => store.replaceReducer(rootReducer))
+    module.hot.accept('./redux', () => store.replaceReducer(rootReducer))
   }
 
   return store
