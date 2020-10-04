@@ -18,7 +18,7 @@ const LogoutButton = () => {
       <Button
         type="submit"
         size="small"
-        variant="contained"
+        variant="outlined"
         onClick={() => logout()}
         color="secondary"
         startIcon={<ExitToAppIcon />}

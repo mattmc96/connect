@@ -23,10 +23,6 @@ const configureStore = (preloadedState = initialState) => {
 
   const store = createStore(rootReducer, preloadedState, composedEnhancers)
 
-  if (process.env.NODE_ENV !== 'production' && module.hot) {
-    module.hot.accept('./redux', () => store.replaceReducer(rootReducer))
-  }
-
   return store
 }
 

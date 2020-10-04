@@ -23,7 +23,7 @@ const Login = () => {
     <>
       <Button
         type="submit"
-        variant="contained"
+        variant="outlined"
         size="small"
         onClick={() => loginWithRedirect()}
         color="primary"

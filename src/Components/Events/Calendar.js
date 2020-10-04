@@ -7,6 +7,8 @@ import { calendarActions } from '../../Store/redux/calendar'
 import { remindersActions } from '../../Store/redux/reminders'
 
 import { AddReminder, Week } from './components'
+import 'bulma/bulma.sass'
+import './Calendar.scss'
 
 const Calendar = () => {
   const date = useSelector(({ calendar }) => calendar.date)
@@ -23,39 +25,44 @@ const Calendar = () => {
         style={{
           display: 'block',
           width: '80vw',
+          boxSizing: 'border-box',
           border: 'solid 1px #EFEFEF',
           margin: '10px auto',
           boxShadow: '0 0 15px 0 lightgrey',
         }}
       >
-        <section className="calendar is-bordered">
+        <div className="calendar is-bordered">
           <header className="header">
             <div
-              className="has-background-grey has-text-white is-uppercase"
-              style={{
-                display: 'flex',
-                fontWeight: '600',
-                fontSize: '2vw',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-              }}
+              className="header-background"
+              // style={{
+              //   display: 'flex',
+              //   fontWeight: '600',
+              //   fontSize: '2vw',
+              //   alignItems: 'center',
+              //   boxSizing: 'border-box',
+              //   transform: 'translateX(-500px)',
+              //   transform: 'translateY(500px)',
+
+              //   justifyContent: 'space-between',
+              // }}
             >
-              <a
+              <div
                 className="has-text-white"
                 style={{ fontSize: '1.3vw' }}
                 onClick={() => previousMonth()}
               >
                 <span
                   className="icon is-large"
-                  style={{
-                    cursor: 'pointer',
-                    fontSize: '1vw',
-                  }}
+                  // style={{
+                  //   cursor: 'pointer',
+                  //   fontSize: '1vw',
+                  // }}
                 >
                   <i className="fas fa-arrow-left" />
                 </span>
                 <span>Previous</span>
-              </a>
+              </div>
               {getPrettyMonthTitle(date)}
               <a
                 className="has-text-white"
@@ -64,24 +71,25 @@ const Calendar = () => {
               >
                 <span>Next</span>
                 <span
-                  className="icon is-large"
-                  style={{
-                    cursor: 'pointer',
-                    fontSize: '1vw',
-                  }}
+                // className="icon is-large"
+                // style={{
+                //   cursor: 'pointer',
+                //   fontSize: '1vw',
+                // }}
                 >
                   <i className="fas fa-arrow-right" />
                 </span>
               </a>
             </div>
             <div
-              className="has-background-info has-text-white has-text-weight-semibold"
+              className="header-background"
               style={{
                 display: 'flex',
                 flexDirection: 'row',
                 justifyContent: 'space-around',
                 cursor: 'default',
                 fontSize: '1vw',
+                left: '300px',
                 padding: '5px 0',
               }}
             >
@@ -95,7 +103,7 @@ const Calendar = () => {
               <Week key={week} date={date} week={week} />
             ))}
           </div>
-        </section>
+        </div>
       </div>
       <div className="container" style={{ width: '80vw' }}>
         <AddReminder addReminder={addReminder} />
