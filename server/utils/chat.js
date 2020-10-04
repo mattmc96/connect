@@ -1,59 +1,76 @@
+const http = require('http')
 const express = require('express')
-const app = express()
-var server = require ('http').Server(app)
-const io = require('socket.io')(server)
-const users = require('./configs/users')
+const socketio = require('socket.io')
 const cors = require('cors')
 
+const {
+  addUser,
+  removeUser,
+  getUser,
+  getUsersInRoom,
+} = require('../controllers/usersController')
+
+const router = require('./index')
+
+const app = express()
+
+const server = http.createServer(app)
+const io = socketio(server)
+
+app.use(router)
 app.use(cors())
 
-var clients = {}
+io.on('connect', (socket) => {
+  socket.on('join', ({ name, room }, callback) => {
+    const { error, user } = addUser({ id: socket.id, name, room })
 
+    if (error) return callback(error)
 
-io.on('connection', function(client) {
-    client.on('sign-in', e => {
-        let user_id = e.id;
-        if (!user_id) return;
-        client.user_id = user_id
-        if (clients[user_id]) {
-            clients[user_id].push(client)
-        } else {
-            clients[user_id] = [client]
-        }
+    socket.join(user.room)
+
+    socket.emit('message', {
+      user: 'admin',
+      text: `${user.name}, welcome to room ${user.room}.`,
+    })
+    socket.broadcast
+      .to(user.room)
+      .emit('message', { user: 'admin', text: `${user.name} has joined!` })
+
+    io.to(user.room).emit('roomData', {
+      room: user.room,
+      users: getUsersInRoom(user.room),
+    })
+
+    callback()
+  })
+
+  socket.on('sendMessage', (message, callback) => {
+    const user = getUser(socket.id)
+
+    io.to(user.room).emit('message', { user: user.name, text: message })
+    callback()
+  })
+
+  socket.on('sendMessage', (message, callback) => {
+    const user = getUser(socket.id)
+
+    io.to(user.room).emit('message', { user: user.name, text: message })
+
+    callback()
+  })
+
+  socket.on('disconnect', () => {
+    const user = removeUser(socket.id)
+
+    if (user) {
+      io.to(user.room).emit('message', {
+        user: 'Admin',
+        text: `${user.name} has left.`,
+      })
+      io.to(user.room).emit('roomData', {
+        room: user.room,
+        users: getUsersInRoom(user.room),
+      })
+    }
+  })
 })
-
-client.on("disconnect", function() {
-  if (!client.user_id || !clients[client.user_id]) {
-    return;
-  }
-  let targetClients = clients[client.user_id];
-  for (let i = 0; i < targetClients.length; ++i) {
-    if (targetClients[i] == client) {
-      targetClients.splice(i, 1);
-    }
-  }
-});
-});
-
-app.get("/users", (req, res) => {
-res.send({ data: users });
-});
-
-client.on('message', e => {
-    let targetId = e.to
-    let sourceId = client.user_id;
-    if(targetId && clients[targetId]){
-        clients[targetId].forEach(cli => {
-            cli.emit('message', e)
-        })
-    }
-    if(sourceId && clients[sourceId]){
-        clients[sourceId].forEach(cli => {
-            cli.emit('message', e')
-        })
-    }
-})
-
-
-
-

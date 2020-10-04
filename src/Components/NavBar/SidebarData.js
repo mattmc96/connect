@@ -24,7 +24,7 @@ export const SidebarData = [
   },
   {
     title: 'Chat',
-    path: '/chat',
+    path: '/join',
     icon: <FaIcons.FaEnvelopeOpenText />,
     cName: 'nav-text',
   },

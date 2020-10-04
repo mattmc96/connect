@@ -3,6 +3,8 @@ const express = require('express')
 const cors = require('cors')
 const massive = require('massive')
 const session = require('express-session')
+
+const router = express.Router()
 // const authCtrl = require('../controllers/authController')
 
 const app = express()
@@ -22,6 +24,9 @@ app.use(
     cookie: { maxAge: 1000 * 60 * 60 * 24 * 365 },
   })
 )
+router.get('/join', (req, res) => {
+  res.send({ response: 'Server is up and running.' }).status(200)
+})
 
 massive({
   connectionString: CONNECTION_STRING,

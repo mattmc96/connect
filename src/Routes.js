@@ -4,7 +4,8 @@ import Landing from './Components/Landing/Landing'
 import Calendar from './Components/Events/Calendar'
 import Profile from './Components/Auth/Profile'
 import NavBar from './Components/NavBar/NavBar'
-import Main from './Components/Chat/Main'
+import Join from './Components/Chat/Join'
+import Chat from './Components/Chat/Chat'
 
 function App() {
   return (
@@ -14,8 +15,9 @@ function App() {
         <Switch>
           <Route path="/" exact component={Landing} />
           <Route path="/profile" component={Profile} />
-          <Route path="/chat" component={Main} />
+          <Route path="/join" component={Join} />
           <Route path="/calendar" component={Calendar} />
+          <Route path="/chat" component={Chat} />
         </Switch>
       </Router>
     </>
