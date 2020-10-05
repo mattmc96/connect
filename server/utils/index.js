@@ -1,19 +1,30 @@
 require('dotenv').config()
-const express = require('express')
+const http = require('http')
+const socketio = require('socket.io')
 const cors = require('cors')
+const express = require('express')
 const massive = require('massive')
 const session = require('express-session')
-
-const router = express.Router()
-// const authCtrl = require('../controllers/authController')
-
 const app = express()
+
+const {
+  addUser,
+  removeUser,
+  getUser,
+  getUsersInRoom,
+} = require('../controllers/usersController')
+// const authCtrl = require('../controllers/authController')
 
 const { CONNECTION_STRING, SERVER_PORT, SESSION_SECRET } = process.env
 
 // MiddleWare
+const router = require('./router')
+const server = http.createServer(app)
+const io = socketio(server)
+
 app.use(express.json())
 app.use(cors())
+app.use(router)
 app.use(require('body-parser').urlencoded({ extended: true }))
 
 app.use(
@@ -24,8 +35,60 @@ app.use(
     cookie: { maxAge: 1000 * 60 * 60 * 24 * 365 },
   })
 )
-router.get('/join', (req, res) => {
-  res.send({ response: 'Server is up and running.' }).status(199)
+
+io.on('connect', (socket) => {
+  socket.on('join', ({ name, room }, callback) => {
+    const { error, user } = addUser({ id: socket.id, name, room })
+
+    if (error) return callback(error)
+
+    socket.join(user.room)
+
+    socket.emit('message', {
+      user: 'admin',
+      text: `${user.name}, welcome to room ${user.room}.`,
+    })
+    socket.broadcast
+      .to(user.room)
+      .emit('message', { user: 'admin', text: `${user.name} has joined!` })
+
+    io.to(user.room).emit('roomData', {
+      room: user.room,
+      users: getUsersInRoom(user.room),
+    })
+
+    callback()
+  })
+
+  socket.on('sendMessage', (message, callback) => {
+    const user = getUser(socket.id)
+
+    io.to(user.room).emit('message', { user: user.name, text: message })
+    callback()
+  })
+
+  socket.on('sendMessage', (message, callback) => {
+    const user = getUser(socket.id)
+
+    io.to(user.room).emit('message', { user: user.name, text: message })
+
+    callback()
+  })
+
+  socket.on('disconnect', () => {
+    const user = removeUser(socket.id)
+
+    if (user) {
+      io.to(user.room).emit('message', {
+        user: 'Admin',
+        text: `${user.name} has left.`,
+      })
+      io.to(user.room).emit('roomData', {
+        room: user.room,
+        users: getUsersInRoom(user.room),
+      })
+    }
+  })
 })
 
 massive({
