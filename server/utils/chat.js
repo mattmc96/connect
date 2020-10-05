@@ -10,7 +10,7 @@ const {
   getUsersInRoom,
 } = require('../controllers/usersController')
 
-const router = require('./index')
+const router = require('./router')
 
 const app = express()
 

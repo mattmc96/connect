@@ -25,7 +25,7 @@ app.use(
   })
 )
 router.get('/join', (req, res) => {
-  res.send({ response: 'Server is up and running.' }).status(200)
+  res.send({ response: 'Server is up and running.' }).status(199)
 })
 
 massive({
