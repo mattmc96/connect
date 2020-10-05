@@ -6,10 +6,10 @@ import { useActions } from '../../../../hooks'
 import { remindersActions } from '../../../../Store/redux/reminders'
 
 const Reminder = (props) => {
-  const { id, text, city, date, hour, color } = props
+  const { id, text, group, date, hour, color } = props
   const { removeReminder } = useActions(remindersActions)
 
-  const title = `${text} - ${city}`
+  const title = `${text} - ${group}`
 
   return (
     <div
@@ -50,7 +50,7 @@ const Reminder = (props) => {
 Reminder.propTypes = {
   id: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
-  city: PropTypes.string.isRequired,
+  group: PropTypes.string.isRequired,
   date: PropTypes.instanceOf(Date).isRequired,
   hour: PropTypes.instanceOf(Date).isRequired,
   color: PropTypes.string.isRequired,

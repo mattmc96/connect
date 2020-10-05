@@ -1,12 +1,27 @@
-.header {
+.calendar-header {
+  box-sizing: border-box;
   height: 10vh;
   width: 50vw;
   position: absolute;
-  left: -100rem;
+  top: -20rem;
+  left: -100px;
+  border: 2px solid black;
 }
-.header-background {
-  width: 200px;
-  flex-direction: row;
+
+.calendar-is-bordered {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  top: 20rem;
+}
+
+.has-text-white {
+  background-color: black;
   position: relative;
-  //   left: 50rem;
+  top: -250px;
+}
+.month {
 }

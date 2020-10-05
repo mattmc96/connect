@@ -1,4 +1,5 @@
 import React from 'react'
+
 import './styles.scss'
 
 import ReactEmoji from 'react-emoji'
@@ -22,9 +23,9 @@ const Message = ({ message: { text, user }, name }) => {
   ) : (
     <div className="messageContainer justifyStart">
       <div className="messageBox backgroundLight">
-        <p className="messageText colorDark">{ReactEmoji.emjoify(text)}</p>
+        <p className="messageText colorDark">{ReactEmoji.emojify(text)}</p>
       </div>
-      <p className="sentText p1-10 ">{user}</p>
+      <p className="sentText pl-10 ">{user}</p>
     </div>
   )
 }

@@ -3,8 +3,16 @@ const express = require('express')
 const cors = require('cors')
 const massive = require('massive')
 const session = require('express-session')
-
+const socketio = require('socket.io')
 const router = express.Router()
+
+const {
+  addUser,
+  removeUser,
+  getUser,
+  getUsersInRoom,
+} = require('../controllers/usersController')
+
 // const authCtrl = require('../controllers/authController')
 
 const app = express()
@@ -34,7 +42,65 @@ massive({
 }).then((db) => {
   app.set('db', db)
   console.log('=> DB CONNECTED')
-  app.listen(SERVER_PORT, () =>
-    console.log(`=> SERVER CONNECTED ON PORT: ${SERVER_PORT}`)
-  )
+})
+const server = app.listen(SERVER_PORT, () =>
+  console.log(`=> SERVER CONNECTED ON PORT: ${SERVER_PORT}`)
+)
+
+const io = socketio(server)
+
+io.on('connection', (socket) => {
+  console.log('connected')
+  socket.on('join', ({ name, room }, callback) => {
+    const { error, user } = addUser({ id: socket.id, name, room })
+
+    if (error) return callback(error)
+
+    socket.join(user.room)
+
+    socket.emit('message', {
+      user: 'admin',
+      text: `${user.name}, welcome to room ${user.room}.`,
+    })
+    socket.broadcast
+      .to(user.room)
+      .emit('message', { user: 'admin', text: `${user.name} has joined!` })
+
+    io.to(user.room).emit('roomData', {
+      room: user.room,
+      users: getUsersInRoom(user.room),
+    })
+
+    callback()
+  })
+
+  socket.on('sendMessage', (message, callback) => {
+    const user = getUser(socket.id)
+
+    io.to(user.room).emit('message', { user: user.name, text: message })
+    callback()
+  })
+
+  socket.on('sendMessage', (message, callback) => {
+    const user = getUser(socket.id)
+
+    io.to(user.room).emit('message', { user: user.name, text: message })
+
+    callback()
+  })
+
+  socket.on('disconnect', () => {
+    const user = removeUser(socket.id)
+
+    if (user) {
+      io.to(user.room).emit('message', {
+        user: 'Admin',
+        text: `${user.name} has left.`,
+      })
+      io.to(user.room).emit('roomData', {
+        room: user.room,
+        users: getUsersInRoom(user.room),
+      })
+    }
+  })
 })

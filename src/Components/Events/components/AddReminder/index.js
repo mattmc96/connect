@@ -21,7 +21,7 @@ const AddReminder = (props) => {
   )
 
   const text = useFormInput('Reminder')
-  const city = useFormInput('Any')
+  const group = useFormInput('Any')
   const date = useFormInput(initialDate)
   const { valueAsDate, ...hour } = useTimeInput(defaultHour)
   const color = useFormInput('#A4A4A4')
@@ -42,7 +42,7 @@ const AddReminder = (props) => {
 
       addReminder({
         text: text.value,
-        city: city.value,
+        group: group.value,
         date: dateValue,
         hour: hourValue,
         color: color.value,
@@ -51,7 +51,7 @@ const AddReminder = (props) => {
     onToggle()
   }, [
     addReminder,
-    city.value,
+    group.value,
     color.value,
     date.value,
     hour.value,
@@ -94,12 +94,12 @@ const AddReminder = (props) => {
 
           <div className="field is-horizontal">
             <div className="field-label is-normal">
-              <label className="label">City</label>
+              <label className="label">Team</label>
             </div>
             <div className="field-body">
               <div className="field">
                 <div className="control">
-                  <input className="input" type="city" {...city} />
+                  <input className="input" type="group" {...group} />
                 </div>
               </div>
             </div>

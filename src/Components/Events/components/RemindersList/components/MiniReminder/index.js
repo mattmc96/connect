@@ -2,9 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const MiniReminder = (props) => {
-  const { text, city, color } = props
+  const { text, group, color } = props
 
-  const title = `${text} - ${city}`
+  const title = `${text} - ${group}`
 
   return (
     <div

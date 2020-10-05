@@ -9,9 +9,9 @@ import InfoBar from './InfoBar'
 
 import './styles.scss'
 
-const ENDPOINT = 'https://personalproject-connect.herokuapp.com/'
+// const ENDPOINT = 'https://personalproject-connect.herokuapp.com/'
 
-let socket
+let socket = io.connect()
 
 const Chat = ({ location }) => {
   const [name, setName] = useState('')
@@ -23,8 +23,6 @@ const Chat = ({ location }) => {
   useEffect(() => {
     const { name, room } = queryString.parse(location.search)
 
-    socket = io(ENDPOINT)
-
     setRoom(room)
     setName(name)
 
@@ -33,7 +31,7 @@ const Chat = ({ location }) => {
         alert(error)
       }
     })
-  }, [ENDPOINT, location.search])
+  }, [location.search])
 
   useEffect(() => {
     socket.on('message', (message) => {

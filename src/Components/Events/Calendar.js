@@ -23,7 +23,6 @@ const Calendar = () => {
       <div
         className="container"
         style={{
-          display: 'block',
           width: '80vw',
           boxSizing: 'border-box',
           border: 'solid 1px #EFEFEF',
@@ -31,21 +30,17 @@ const Calendar = () => {
           boxShadow: '0 0 15px 0 lightgrey',
         }}
       >
-        <div className="calendar is-bordered">
-          <header className="header">
+        <div className="calendar-is-bordered">
+          <header className="calendar-header">
             <div
               className="header-background"
-              // style={{
-              //   display: 'flex',
-              //   fontWeight: '600',
-              //   fontSize: '2vw',
-              //   alignItems: 'center',
-              //   boxSizing: 'border-box',
-              //   transform: 'translateX(-500px)',
-              //   transform: 'translateY(500px)',
-
-              //   justifyContent: 'space-between',
-              // }}
+              style={{
+                display: 'flex',
+                fontWeight: '600',
+                fontSize: '2vw',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+              }}
             >
               <div
                 className="has-text-white"
@@ -54,10 +49,10 @@ const Calendar = () => {
               >
                 <span
                   className="icon is-large"
-                  // style={{
-                  //   cursor: 'pointer',
-                  //   fontSize: '1vw',
-                  // }}
+                  style={{
+                    cursor: 'pointer',
+                    fontSize: '1vw',
+                  }}
                 >
                   <i className="fas fa-arrow-left" />
                 </span>
@@ -71,11 +66,11 @@ const Calendar = () => {
               >
                 <span>Next</span>
                 <span
-                // className="icon is-large"
-                // style={{
-                //   cursor: 'pointer',
-                //   fontSize: '1vw',
-                // }}
+                  className="icon is-large"
+                  style={{
+                    cursor: 'pointer',
+                    fontSize: '1vw',
+                  }}
                 >
                   <i className="fas fa-arrow-right" />
                 </span>
