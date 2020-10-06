@@ -11,11 +11,10 @@ const Profile = () => {
   return (
     isAuthenticated && (
       <>
-        <Avatar src={user.picutre} alt="Remy Sharp" />
         <h2>{user.name}</h2>
         <p>{user.email}</p>
         <JSONPretty data={user} />
-        <di className="chart"></di>
+        {/* <di className="chart"></di> */}
       </>
     )
   )

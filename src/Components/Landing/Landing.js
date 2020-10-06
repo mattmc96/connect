@@ -7,6 +7,7 @@ import {
   ThemeProvider,
 } from '@material-ui/core/styles'
 import Button from '@material-ui/core/Button'
+import { useAuth0 } from '@auth0/auth0-react'
 import { green, purple } from '@material-ui/core/colors'
 import { useSpring, animated } from 'react-spring'
 import Jumbotron from 'react-bootstrap/Jumbotron'
@@ -40,6 +41,9 @@ function Landing() {
       margin: theme.spacing(1),
     },
   }))
+
+  const { loginWithRedirect } = useAuth0()
+
   const classes = useStyles()
   return (
     <div className="body">
@@ -68,7 +72,7 @@ function Landing() {
                 size="large"
                 type="submit"
                 // TODO MAKE THIS A LGOIN BUTTON OR REDIRECT OF SOME SORT
-                // onClick={() => loginWithRedirect()}
+                onClick={() => loginWithRedirect()}
               >
                 Get Started
               </Button>
