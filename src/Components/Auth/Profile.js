@@ -14,6 +14,10 @@ const Profile = () => {
         <h2>{user.name}</h2>
         <p>{user.email}</p>
         <JSONPretty data={user} />
+        <img
+          src={`https://ghchart.rshah.org/${user.nickname}`}
+          alt="2016rshah's Github chart"
+        />
         {/* <di className="chart"></di> */}
       </>
     )

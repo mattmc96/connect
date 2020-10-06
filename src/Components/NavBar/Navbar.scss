@@ -101,8 +101,8 @@ span {
   height: 2rem;
   width: 2rem;
   position: absolute;
-  top: 2.5rem;
-  left: 110.2rem;
+  top: 3.5rem;
+  left: 120.2rem;
 }
 
 .header {
@@ -112,7 +112,7 @@ span {
   width: 14rem;
   position: relative;
   top: 1rem;
-  left: 95rem;
+  left: 105rem;
   font-size: 60px;
   color: white;
   font-family: 'Galada', cursive;
@@ -130,4 +130,9 @@ span {
   z-index: 3;
   transform: translateX(20px);
   transform: translateY(10rem);
+}
+
+.avatar {
+  position: relative;
+  left: 110rem;
 }
