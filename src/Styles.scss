@@ -1,8 +1,10 @@
 @namespace url(http://www.w3.org/1999/xhtml);
 @namespace svg url(http://www.w3.org/2000/svg);
 @import url(https://cdn.jsdelivr.net/gh/jgthms/minireset.css@master/minireset.min.css); // body {
-//   height: 100vh;
-//   width: 100vw;
-//   background-image: linear-gradient(to top, #accbee 0%, #e7f0fd 100%);
-//   z-index: -1;
-// }
+
+body {
+  height: 100vh;
+  width: 100vw;
+  background-image: linear-gradient(to top, #accbee 0%, #e7f0fd 100%);
+  z-index: -1;
+}

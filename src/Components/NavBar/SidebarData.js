@@ -26,7 +26,7 @@ export const SidebarData = [
   {
     title: 'Chat',
     path: '/join',
-    icon: <FaIcons.FaEnvelopeOpenText />,
+    icon: <FaIcons.FaRegCommentDots />,
     cName: 'nav-text',
   },
   {
@@ -36,9 +36,9 @@ export const SidebarData = [
     cName: 'nav-text',
   },
   {
-    title: 'Help',
-    path: '/support',
-    icon: <IoIcons.IoMdHelpCircle />,
+    title: 'ReadME',
+    path: 'https://github.com/mattmc96/connect',
+    icon: <FaIcons.FaGithub />,
     cName: 'nav-text',
   },
 ]
