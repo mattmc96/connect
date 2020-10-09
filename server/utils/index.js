@@ -3,7 +3,10 @@ const express = require('express')
 const cors = require('cors')
 const massive = require('massive')
 const session = require('express-session')
+const path = require('path')
+const postController = require('../controllers/postController')
 const socketio = require('socket.io')
+
 const router = express.Router()
 
 const {
@@ -23,6 +26,13 @@ const { CONNECTION_STRING, SERVER_PORT, SESSION_SECRET } = process.env
 app.use(express.json())
 app.use(cors())
 app.use(require('body-parser').urlencoded({ extended: true }))
+
+app.use(express.static(__dirname + '/../../build'))
+
+app.get('/api/posts', postController.getPosts)
+// app.post('/api/posts', postController.addPost)
+app.put('/api/posts/:post_id', postController.editPost)
+app.delete('/api/posts/:post_id', postController.deletePost)
 
 app.use(
   session({
@@ -103,4 +113,8 @@ io.on('connection', (socket) => {
       })
     }
   })
+})
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../build/index.html'))
 })

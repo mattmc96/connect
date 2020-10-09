@@ -6,6 +6,7 @@ import Profile from './Components/Auth/Profile'
 import NavBar from './Components/NavBar/NavBar'
 import Join from './Components/Chat/Join'
 import Chat from './Components/Chat/Chat'
+import Editor from './Components/posts/NewEditor'
 
 const App = withRouter(({ location }) => {
   return (
@@ -17,9 +18,10 @@ const App = withRouter(({ location }) => {
         <Route path="/join" component={Join} />
         <Route path="/calendar" component={Calendar} />
         <Route path="/chat" component={Chat} />
+        <Route path="/post" component={Editor} />
       </Switch>
     </div>
   )
 })
-
+// comment
 export default App

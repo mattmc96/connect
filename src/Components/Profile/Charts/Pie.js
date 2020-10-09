@@ -14,17 +14,21 @@ import Chart from 'fusioncharts/fusioncharts.charts'
 // Include the theme as fusion
 import FusionTheme from 'fusioncharts/themes/fusioncharts.theme.fusion'
 
+import { useAuth0 } from '@auth0/auth0-react'
+
 // Adding the chart and theme as dependency to the core fusioncharts
 ReactFC.fcRoot(FusionCharts, Chart, FusionTheme)
 
 // STEP 3 - Creating the JSON object to store the chart configurations
 
-const ChartComponent = ({ data }) => {
+function ChartComponent({ data }) {
+  const { user } = useAuth0()
+
   const chartConfigs = {
-    type: 'pie2d', // The chart type
-    width: '100%', // Width of the chart
-    height: '350', // Height of the chart
-    dataFormat: 'json', // Data type
+    type: 'pie2d',
+    width: '100%',
+    height: '350',
+    dataFormat: 'json',
     dataSource: {
       // Chart Configuration
       chart: {

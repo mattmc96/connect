@@ -1,17 +1,18 @@
-.card {
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,200italic,300,300italic,regular,italic,600,600italic,700,700italic,900,900italic);
+.cardlogo {
   width: 30ch;
-  height: 30ch;
+  height: 29ch;
   border-radius: 10%;
-  opacity: 100%;
+  opacity: 0.9;
   background-image: url('../../assets/connect_logo.png');
   background-size: cover;
   background-position: center center;
-  box-shadow: 0px 10px 30px -5px rgba(0, 0, 0, 0.3);
+  box-shadow: 10px 10px 30px 5px rgba(0, 0, 0, 0.3);
   transition: box-shadow 0.5s;
   will-change: transform;
   position: relative;
   top: 0rem;
-  left: 48rem;
+  left: 5.5rem;
   z-index: 2;
 }
 
@@ -22,7 +23,7 @@
   background-size: cover;
   z-index: 1;
 }
-.card:hover {
+.cardlogo:hover {
   box-shadow: 0px 30px 100px -10px rgba(0, 0, 0, 0.4);
 }
 
@@ -52,19 +53,28 @@
   position: relative;
   background-position: center;
 }
-.jumbo {
-  height: 10vh;
-  width: 10vw;
-  box-sizing: border-box;
-  color: white;
-  height: 10vh;
-  width: 10vw;
+.mainjumbo {
+  height: 31rem;
+  width: 30rem;
+  border-radius: 30px;
+  opacity: 0.8;
   position: relative;
-  top: 0rem;
-  left: 25rem;
+  border: 1px solid black;
+  top: 20rem;
+  text-align: center;
+  box-shadow: 10px 10px 30px 5px black;
+  font-size: 20px;
+  font-weight: 600;
+  font-family: Source Sans Pro;
+  left: 50rem;
+  box-shadow: 10px 10px 30px 5px rgba(0, 0, 0, 0.3);
   z-index: 2;
-  border-radius: 10%;
 }
+button {
+  position: relative;
+  top: -0.5rem;
+}
+
 // .learn {
 //   position: relative;
 //   z-index: 3;

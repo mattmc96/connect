@@ -1,0 +1,2 @@
+DELETE FROM feed
+WHERE id = $1;

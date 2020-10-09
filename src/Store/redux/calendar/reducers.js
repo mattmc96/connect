@@ -1,6 +1,6 @@
 import { addMonths, subMonths } from 'date-fns'
 
-import { initialState } from '../../store'
+import { initialState } from '../../Store'
 
 import types from './types'
 

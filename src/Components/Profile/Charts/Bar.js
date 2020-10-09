@@ -15,8 +15,8 @@ const ChartComponent = ({ data }) => {
     height: '350', // Height of the chart
     dataFormat: 'json', // Data type
     dataSource: {
-      // Chart Configuration
-      chart: {
+      // Chart Configuration{
+      chart: 
         caption: 'Most Forked',
         yAxisName: 'Forks',
         xAxisName: 'Repos',
