@@ -8,3 +8,36 @@ body {
   background-image: linear-gradient(to top, #accbee 0%, #e7f0fd 100%);
   z-index: -1;
 }
+
+.gitgraph {
+  height: 10rem;
+  width: 70rem;
+  position: relative;
+  right: -30rem;
+}
+.gitline {
+  position: relative;
+  font-size: larger;
+  color: gray;
+  font-weight: 600;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  right: -60rem;
+}
+.profile-image {
+  height: 10rem;
+  width: 10rem;
+  position: relative;
+  top: 0rem;
+  left: -65rem;
+  z-index: 1;
+}
+
+.email-head {
+  position: relative;
+  left: -20rem;
+}
+
+.repo-search {
+  position: relative;
+  left: -20rem;
+}

@@ -1,11 +1,15 @@
+@import url(https://fonts.googleapis.com/css?family=Patrick+Hand:regular);
 .calendar-header {
   box-sizing: border-box;
   height: 10vh;
-  width: 50vw;
+  width: 60vw;
   position: absolute;
-  top: -20rem;
-  left: -100px;
-  border: 2px solid black;
+  top: -8rem;
+  left: 30px;
+  box-shadow: 1px 1px gray;
+  border: 1px solid white;
+  background-color: aliceblue;
+  border-radius: 1%;
 }
 
 .calendar-is-bordered {
@@ -19,9 +23,18 @@
 }
 
 .has-text-white {
-  background-color: black;
   position: relative;
-  top: -250px;
+  top: 20px;
 }
-.month {
+
+.next {
+  color: darkblue;
+  border: 2px dotted darkblue;
+  font-weight: 400;
+  letter-spacing: 5px;
+  font-family: 'Patrick Hand', cursive;
+}
+
+.header-background {
+  font-family: 'Patrick Hand', cursive;
 }

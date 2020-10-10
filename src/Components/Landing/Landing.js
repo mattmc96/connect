@@ -61,7 +61,7 @@ function Landing() {
             onMouseLeave={() => set({ xys: [0, 0, 1] })}
             style={{ transform: props.xys.interpolate(trans) }}
           />
-          <Card.Body>
+          <Card.Body styles={{ backgroundColor: 'black' }}>
             {/* <Card.Img variant="top" src="https://picsum.photos/200/300" /> */}
             <Card.Title>
               <p>Welcome to connect!</p>

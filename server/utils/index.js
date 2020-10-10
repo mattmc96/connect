@@ -91,13 +91,13 @@ io.on('connection', (socket) => {
     callback()
   })
 
-  socket.on('sendMessage', (message, callback) => {
-    const user = getUser(socket.id)
+  // socket.on('sendMessage', (message, callback) => {
+  //   const user = getUser(socket.id)
 
-    io.to(user.room).emit('message', { user: user.name, text: message })
+  //   io.to(user.room).emit('message', { user: user.name, text: message })
 
-    callback()
-  })
+  //   callback()
+  // })
 
   socket.on('disconnect', () => {
     const user = removeUser(socket.id)

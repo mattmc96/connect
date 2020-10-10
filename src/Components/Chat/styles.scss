@@ -1,3 +1,4 @@
+@import url(https://fonts.googleapis.com/css?family=Patrick+Hand:regular);
 .textContainer {
   display: flex;
   flex-direction: column;
@@ -15,13 +16,35 @@
 
 .activeItem {
   display: flex;
+  font-size: 30px;
   align-items: center;
+}
+
+.h1message {
+  position: relative;
+  font-size: 30px;
+  top: 10rem;
+  left: -90rem;
+  font-family: 'Patrick Hand', cursive;
+}
+
+.peoplechatting {
+  position: relative;
+  left: -10rem;
+  font-size: 30px;
+  font-family: 'Patrick Hand', cursive;
 }
 
 .activeContainer img {
   padding-left: 10px;
+  font-size: 30px;
+  font-family: 'Patrick Hand', cursive;
 }
 
+.h1emoji {
+  position: relative;
+  left: -30px;
+}
 .textContainer h1 {
   margin-bottom: 0px;
 }
@@ -135,12 +158,19 @@ body {
   border-radius: 0;
   padding: 15px 20px;
   width: 100%;
+  font-family: 'Patrick Hand', cursive;
+  font-weight: 100;
+  font-size: 17px;
+  font-kerning: inherit;
+  opacity: 90%;
 }
 
 .heading {
   color: white;
   font-size: 2.5em;
   padding-bottom: 10px;
+  font-family: 'Patrick Hand', cursive;
+  font-weight: 500;
   border-bottom: 2px solid white;
 }
 
@@ -158,6 +188,10 @@ body {
 
 .mt-20 {
   margin-top: 20px;
+  padding-top: 10px;
+  font-family: 'Patrick Hand', cursive;
+  letter-spacing: 3px;
+  font-size: 20px;
 }
 
 @media (min-width: 320px) and (max-width: 480px) {
@@ -204,7 +238,7 @@ button:focus {
 .outerContainer {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   height: 100vh;
   background-color: #ddddf3;
 }
@@ -234,4 +268,8 @@ button:focus {
   .container {
     width: 60%;
   }
+}
+
+.icononline {
+  height: 10px;
 }

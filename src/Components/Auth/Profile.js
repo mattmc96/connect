@@ -1,10 +1,8 @@
 import React from 'react'
 import Avatar from '@material-ui/core/Avatar'
-// import Pie from '.././Profile/Charts/Pie'
+import GithubRepoFetch from '../Data/githubRepoFetch'
 import { useAuth0 } from '@auth0/auth0-react'
 import '../../Styles.scss'
-
-import JSONPretty from 'react-json-pretty'
 
 const Profile = () => {
   const { user, isAuthenticated } = useAuth0()
@@ -13,14 +11,17 @@ const Profile = () => {
     isAuthenticated && (
       <>
         <>
+          <h1 className="gitline">Github Api Timeline</h1>
+          <img
+            className="gitgraph"
+            src={`https://ghchart.rshah.org/${user.nickname}`}
+            alt=" Github chart api chart"
+          />
+          <img className="profile-image" src={user.picture} />
           <h2>{user.name}</h2>
           <p>{user.email}</p>
-          {/* <Pie data={user.nickname} /> */}
-          <JSONPretty data={user} />
-          <img
-            src={`https://ghchart.rshah.org/${user.nickname}`}
-            alt="2016rshah's Github chart"
-          />
+          <div data={user}></div>
+          <GithubRepoFetch className="repo-search" />
         </>
       </>
     )

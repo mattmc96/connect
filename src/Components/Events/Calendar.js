@@ -56,7 +56,7 @@ const Calendar = () => {
                 >
                   <i className="fas fa-arrow-left" />
                 </span>
-                <span>Previous</span>
+                <span className="next">Previous</span>
               </div>
               {getPrettyMonthTitle(date)}
               <a
@@ -64,7 +64,7 @@ const Calendar = () => {
                 style={{ fontSize: '1.3vw' }}
                 onClick={() => nextMonth()}
               >
-                <span>Next</span>
+                <span className="next">Next</span>
                 <span
                   className="icon is-large"
                   style={{

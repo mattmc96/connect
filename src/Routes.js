@@ -19,6 +19,15 @@ const App = withRouter(({ location }) => {
         <Route path="/calendar" component={Calendar} />
         <Route path="/chat" component={Chat} />
         <Route path="/post" component={Editor} />
+        <Route
+          path="/readme"
+          component={() => {
+            global.window &&
+              (global.window.location.href =
+                'https://github.com/mattmc96/connect/blob/master/README.md')
+            return null
+          }}
+        />
       </Switch>
     </div>
   )

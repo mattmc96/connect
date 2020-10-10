@@ -30,7 +30,7 @@ const Navbar = () => {
             <>
               <h1 className="header">Connect</h1>
               <img src={Logo} class="img-responsive" alt="responsive image" />
-              <h1>Welcome! {user.email}</h1>
+              <h1 className="welcome-email">Welcome! {user.email}</h1>
               <Avatar src={user.picture} alt={user.name} className="avatar" />
             </>
             <span className="Auth-box"></span>

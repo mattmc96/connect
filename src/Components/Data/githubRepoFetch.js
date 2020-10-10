@@ -2,6 +2,7 @@ import React from 'react'
 import TextField from '@material-ui/core/TextField'
 import { createMuiTheme } from '@material-ui/core/styles'
 import white from '@material-ui/core/colors/purple'
+import { useAuth0 } from '@auth0/auth0-react'
 import Autocomplete from '@material-ui/lab/Autocomplete'
 import { Transform } from '@material-ui/icons'
 
@@ -24,7 +25,13 @@ function App() {
     })
     setIsLoading(true)
 
+    // const { user } = useAuth0()
     // make API calls
+    // fetch('https://api.github.com/search/repositories?q=' + inputValue)
+    // fetch(
+    //   'https://api.github.com/search/users?q=`${user.nickname}`+repos:%3E42+followers:%3E1000' +
+    //     inputValue
+    // )
     fetch('https://api.github.com/search/repositories?q=' + inputValue)
       .then((response) => {
         return response.json()

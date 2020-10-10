@@ -134,5 +134,12 @@ span {
 
 .avatar {
   position: relative;
-  left: 110rem;
+  left: 94rem;
+  z-index: -1;
+}
+
+.welcome-email {
+  color: white;
+  position: relative;
+  left: -5rem;
 }

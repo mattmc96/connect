@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import Button from '@material-ui/core/Button'
 
 import './styles.scss'
 
@@ -22,7 +23,7 @@ export default function SignIn() {
         <div>
           <input
             placeholder="Team"
-            className="joinInput mt-20"
+            className="joinInput"
             type="text"
             onChange={(event) => setRoom(event.target.value)}
           />
@@ -32,7 +33,7 @@ export default function SignIn() {
           to={`/chat?name=${name}&room=${room}`}
         >
           <button className={'button mt-20'} type="submit">
-            Sign In
+            Join
           </button>
         </Link>
       </div>
