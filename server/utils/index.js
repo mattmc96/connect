@@ -30,8 +30,8 @@ app.use(require('body-parser').urlencoded({ extended: true }))
 app.use(express.static(__dirname + '/../../build'))
 
 app.get('/api/posts', postController.getPosts)
-// app.post('/api/posts', postController.addPost)
-app.put('/api/posts/:post_id', postController.editPost)
+app.post('/api/post', postController.addPost)
+app.put('/api/post/:post_id', postController.editPost)
 app.delete('/api/posts/:post_id', postController.deletePost)
 
 app.use(

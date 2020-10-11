@@ -1,37 +1,40 @@
-const getAllPosts = async (db) => {
-  const posts = await db.get_posts()
-  return posts
-}
-
 module.exports = {
-  getPosts: async (req, res) => {
+  getPosts: (req, res) => {
     const db = req.app.get('db')
-    const posts = await db.get_posts(db)
-    res.status(200).send(posts)
-  },
-  editPost: async (req, res) => {
-    const db = req.app.get('db')
-    const { post_id } = req.params
-    await db.edit_post([content, post_id])
-    const posts = await getAllPosts(db)
-    res.status(200).send(posts)
-  },
-  deletePost: async (req, res) => {
-    const db = req.app.get('db')
-    const { post_id } = req.params
-    await db.delete_post([post_id])
-    const posts = await getAllPosts(db)
-    res.status(200).send(posts)
-  },
-  // addPosts: (req, res) => {
-  //   const db = req.app.get('db')
-  //   const { id } = req.params
-  //   const { content, image_url, created_at } = req.body
 
-  //   db.add_post(id, content, image_url, created_at)
-  //     .then((posts) => {
-  //       res.status(200).send(posts)
-  //     })
-  //     .catch((err) => console.log('error on posts'))
-  // },
+    db.get_posts()
+      .then((feed) => res.status(200).send(feed))
+      .catch((err) => console.log('err'))
+  },
+  editPost: (req, res) => {
+    const db = req.app.get('db')
+    const { post_id } = req.params
+    const { content, image_url, created_at } = req.body
+
+    db.edit_post(post_id, content, image_url, created_at)
+      .then(() => {
+        res.status(200).send()
+      })
+      .catch((err) => console.log('err'))
+  },
+  deletePost: (req, res) => {
+    const db = req.app.get('db')
+    const { post_id } = req.params
+
+    db.delete_post(post_id)
+      .then(() => {
+        res.send(200).send(feed)
+      })
+      .catch((err) => console.log('err'))
+  },
+  addPost: (req, res) => {
+    const db = req.app.get('db')
+    const { content, image_url, created_at } = req.body
+
+    db.add_post(content, image_url, created_at)
+      .then((feed) => {
+        res.status(200).send(feed)
+      })
+      .catch((err) => console.log('err'))
+  },
 }
