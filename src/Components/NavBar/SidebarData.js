@@ -29,12 +29,12 @@ export const SidebarData = [
     icon: <FaIcons.FaRegCommentDots />,
     cName: 'nav-text',
   },
-  // {
-  //   title: 'Post',
-  //   path: '/post',
-  //   icon: <IoIcons.IoMdHelpCircle />,
-  //   cName: 'nav-text',
-  // },
+  {
+    title: 'Post',
+    path: '/post',
+    icon: <IoIcons.IoMdHelpCircle />,
+    cName: 'nav-text',
+  },
   {
     title: 'ReadME',
     ahref: '/readme',
