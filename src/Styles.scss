@@ -41,3 +41,15 @@
   position: relative;
   left: -20rem;
 }
+
+@media screen and (max-width: 1200px) {
+  .menu {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .menu {
+    width: 30%;
+  }
+}
