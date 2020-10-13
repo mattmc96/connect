@@ -28,8 +28,8 @@ app.use(cors())
 app.use(require('body-parser').urlencoded({ extended: true }))
 
 app.use(express.static(__dirname + '/../../build'))
-
 app.get('/api/posts', postController.getPosts)
+app.get('/api/products/:id', postController.getOne)
 app.post('/api/post', postController.addPost)
 app.put('/api/post/:post_id', postController.editPost)
 app.delete('/api/posts/:post_id', postController.deletePost)

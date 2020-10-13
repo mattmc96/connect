@@ -37,4 +37,15 @@ module.exports = {
       })
       .catch((err) => console.log('err'))
   },
+  getOne: (req, res) => {
+    const db = req.app.get('db')
+    const { id } = req.params
+
+    db.get_one(id)
+      .then((feed) => {
+        feed = feed[0]
+        res.status(200).send(feed)
+      })
+      .catch((err) => console.log('Dont worry bud try again later 4'))
+  },
 }

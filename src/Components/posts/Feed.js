@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import Post from './Post'
+import Post from './Form'
 
 class Feed extends Component {
   constructor(props) {
@@ -26,7 +26,7 @@ class Feed extends Component {
 
   deletePost = (id) => {
     axios
-      .delete(`/api/post/${post_id}`)
+      .delete(`/api/posts/${id}`)
       .then((res) => this.getAllPosts())
       .catch((err) => console.log('Dont worry bud try again later', err))
   }
@@ -35,7 +35,7 @@ class Feed extends Component {
     return (
       <div>
         {this.state.posts.map((e) => {
-          return <APost allPosts={e} key={e.id} deletePost={this.deletePost} />
+          return <Post posts={e} key={e.id} deletePost={this.deletePost} />
         })}
       </div>
     )
