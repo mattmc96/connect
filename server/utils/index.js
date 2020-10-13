@@ -5,6 +5,7 @@ const massive = require('massive')
 const session = require('express-session')
 const path = require('path')
 const postController = require('../controllers/postController')
+const calController = require('../controllers/calController')
 const socketio = require('socket.io')
 
 const router = express.Router()
@@ -33,6 +34,9 @@ app.get('/api/products/:id', postController.getOne)
 app.post('/api/post', postController.addPost)
 app.put('/api/post/:post_id', postController.editPost)
 app.delete('/api/posts/:post_id', postController.deletePost)
+app.get('/api/events', calController.getEvents)
+app.post('/api/events', calController.addEvent)
+app.delete('/api/events/:cal_id', calController.deleteEvent)
 
 app.use(
   session({
